@@ -14,9 +14,9 @@ pipeline {
         }
         success {
             echo 'I succeeeded!'
-            slackSend channel: '@alan.cheung',
-                      color: 'good',
-                      message: "The pipeline ${currentBuild.fullDisplayName} completed successfully."
+            mail to: 'alan.cheung@dowjones.com',
+                 subject: "Successful Pipeline: ${currentBuild.fullDisplayName}",
+                 body: "Something is wrong with ${env.BUILD_URL}"
         }
         unstable {
             echo 'I am unstable :/'
