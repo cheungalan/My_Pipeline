@@ -14,6 +14,9 @@ pipeline {
         }
         success {
             echo 'I succeeeded!'
+            slackSend channel: '@alan.cheung',
+                      color: 'good',
+                      message: "The pipeline ${currentBuild.fullDisplayName} completed successfully."
         }
         unstable {
             echo 'I am unstable :/'
