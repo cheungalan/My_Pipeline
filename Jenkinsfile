@@ -1,23 +1,28 @@
 pipeline {
     agent any
+    parameters {
+        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+
+        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
+
+        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
+
+        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
+
+        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
+    }
     stages {
-        /* "Build" and "Test" stages omitted */
-
-        stage('Deploy - Staging') {
+        stage('Example') {
             steps {
-                echo 'Deploying - Staging'
-            }
-        }
+                echo "Hello ${params.PERSON}"
 
-        stage('Sanity check') {
-            steps {
-                input "Does the staging environment look ok?"
-            }
-        }
+                echo "Biography: ${params.BIOGRAPHY}"
 
-        stage('Deploy - Production') {
-            steps {
-                echo 'Deploying - Production'
+                echo "Toggle: ${params.TOGGLE}"
+
+                echo "Choice: ${params.CHOICE}"
+
+                echo "Password: ${params.PASSWORD}"
             }
         }
     }
