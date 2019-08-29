@@ -1,8 +1,8 @@
 pipeline {
   agent { 
     docker { 
-      image 'tutum/apache-php' 
-      args '-p 8081:8081 -e ALLOW_OVERRIDE=true'
+      image 'webdevops/php-apache' 
+      args '-p 8081:8081'
     } 
   }
   stages {
