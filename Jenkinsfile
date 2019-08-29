@@ -1,7 +1,7 @@
 pipeline {
   agent { 
     docker { 
-      image 'webdevops/php-apache' 
+      image 'tutum/apache-php' 
       args '-p 80:80'
     } 
   }
