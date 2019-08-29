@@ -16,7 +16,7 @@ pipeline {
         CI = 'true'
       }
       steps {
-        sh 'php test.php'
+        sh 'curl http://localhost/test.php'
       }
     }
     stage('Deliver') {
