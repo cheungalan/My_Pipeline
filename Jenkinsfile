@@ -1,22 +1,27 @@
 pipeline {
-    agent any
-    stages {
-        stage('Example Build') {
-            steps {
-                echo 'Hello World'
-            }
-        }
-        stage('Example Deploy') {
-            when {
-                branch 'production'
-                anyOf {
-                    environment name: 'DEPLOY_TO', value: 'production'
-                    environment name: 'DEPLOY_TO', value: 'staging'
-                }
-            }
-            steps {
-                echo 'Deploying'
-            }
-        }
+  agent { 
+    docker { image 'php' } 
+  }
+  stages {
+    stage('Build') {
+      steps {
+        sh 'php --version'
+      }
     }
+  stage('Test') {
+      environment {
+        CI = 'true'
+      }
+      steps {
+        sh 'php echo "Hello All"'
+      }
+    }
+    stage('Deliver') {
+      steps {
+//        sh './jenkins/scripts/deliver.sh'
+        input 'Finished using the web site? (Click "Proceed" to continue)'
+//        sh './jenkins/scripts/kill.sh'
+      }
+    }
+  }
 }
