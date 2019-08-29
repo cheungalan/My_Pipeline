@@ -9,7 +9,7 @@ pipeline {
     stage('Build') {
       steps {
         sh 'php --version'
-        sh 'service httpd start'
+        sh 'service apache start'
       }
     }
   stage('Test') {
