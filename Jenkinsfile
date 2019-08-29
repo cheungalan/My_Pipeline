@@ -2,7 +2,7 @@ pipeline {
   agent { 
     docker { 
       image 'webdevops/php-apache' 
-      args '-p 8081:8081'
+      args '-p 80:80'
     } 
   }
   stages {
@@ -16,7 +16,7 @@ pipeline {
         CI = 'true'
       }
       steps {
-        sh 'curl http://localhost:8081/test.php'
+        sh 'curl http://localhost/test.php'
       }
     }
     stage('Deliver') {
