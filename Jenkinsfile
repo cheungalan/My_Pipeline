@@ -13,7 +13,7 @@ pipeline {
         CI = 'true'
       }
       steps {
-        sh 'php echo "Hello All"'
+        sh 'php test.php'
       }
     }
     stage('Deliver') {
