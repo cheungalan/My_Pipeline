@@ -1,6 +1,9 @@
 pipeline {
   agent { 
-    docker { image 'php' } 
+    docker { 
+      image 'tutum/apache-php' 
+      args '-p 8080:8080 -e ALLOW_OVERRIDE=true'
+    } 
   }
   stages {
     stage('Build') {
