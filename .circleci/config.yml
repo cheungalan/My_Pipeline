@@ -1,8 +1,10 @@
-  version: 2.1
-  jobs:
-    build:
-      docker: 
-        - image: circleci/android:api-25-alpha
-      steps:
-        - checkout # check out the code in the project directory
-        - run: echo "hello world" # run the `echo` command
+version: 2.1
+orbs:
+  win: circleci/windows@1.0.0
+
+jobs:
+  build-windows:
+    executor: win/vs2019
+    steps:
+      - checkout
+      - run: Write-Host 'Hello, Windows'
