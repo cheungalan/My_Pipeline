@@ -5,7 +5,9 @@ orbs:
 
 jobs:
   build:
-    executor: win/vs2019
+    executor:
+      name: win/vs2019
+      shell: bash.exe
     steps:
       - checkout
-      - run: Write-Host 'Hello, Windows'
+      - run: echo 'Hello, Windows'
