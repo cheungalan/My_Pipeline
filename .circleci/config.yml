@@ -2,8 +2,20 @@
   jobs:
     build:
       docker: 
-        - image: circleci/php:apache-stretch
+        - image: circleci/php:7.0-apache-node-browsers
       steps:
         - checkout # check out the code in the project directory
+        
+        - run: echo -e "[Date]\ndate.timezone = Asia/Tokyo" | sudo tee /usr/local/etc/php/php.ini > /dev/null
+        
+        - run: sudo apt-get update -y
+        - run: sudo apt-get install -y libpng-dev libjpeg-dev zip unzip git
+        - run: sudo docker-php-ext-install zip
+        - run: sudo docker-php-ext-configure gd --with-jpeg-dir=/usr/lib/x86_64-linux-gnu/
+        - run: sudo docker-php-ext-install pdo pdo_mysql gd mbstring zip
+        - run: sudo composer self-update
+        
+        
+        
         - run: echo "hello world" # run the `echo` command
         - run: php test.php
