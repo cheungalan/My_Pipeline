@@ -18,6 +18,6 @@
         
         
         - run: php -v
-        - run: httpd -v
+        - run: apache2 -v
         - run: echo "hello world" # run the `echo` command
         - run: php test.php
