@@ -19,5 +19,6 @@
         
         - run: php -v
         - run: apache2 -v
+        - run: ifconfig
         - run: echo "hello world" # run the `echo` command
         - run: php test.php
