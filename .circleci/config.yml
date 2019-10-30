@@ -2,7 +2,8 @@
   jobs:
     build:
       docker: 
-        - image: circleci/php:7.0-apache-node-browsers
+        - image: circleci/php:7.3.9-apache-stretch
+
       steps:
         - checkout # check out the code in the project directory
         
@@ -16,6 +17,6 @@
         - run: sudo composer self-update
         
         
-        
+        - run: php -v
         - run: echo "hello world" # run the `echo` command
         - run: php test.php
